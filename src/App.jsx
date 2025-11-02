@@ -4,6 +4,7 @@ import GenreSelector from "./components/GenreSelector";
 import NowPlaying from "./components/NowPlaying";
 import AudioPlayer from "./components/AudioPlayer";
 import "./App.css";
+import MyHeader from "./components/MyHeader";
 
 function App() {
   const [currentStation, setCurrentStation] = useState(STATIONS[0]);
@@ -18,12 +19,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
-      <h1 className="text-3xl font-bold mb-6">🎵 My Radio</h1>
-
-      <GenreSelector stations={STATIONS} handlePlay={handlePlay} />
-      <NowPlaying currentStation={currentStation} />
+    <div className="app-container">
+      <MyHeader />
       <AudioPlayer audioRef={audioRef} />
+      <NowPlaying currentStation={currentStation} />
+      <GenreSelector stations={STATIONS} handlePlay={handlePlay} />
     </div>
   );
 }

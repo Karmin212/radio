@@ -1,15 +1,16 @@
 ﻿import React from "react";
+import ImageGenreButton from "../assets/ImageGenreButton.png";
+import "./GenreButton.css";
 
 function GenreButton({ genre, onClick }) {
     return (
-        <div className="flex flex-col items-center">
+        <div className="genre-button-wrapper">
             <button
-                className="px-5 py-2 bg-gray-800 rounded hover:bg-gray-700"
+                className="genre-button"
+                style={{ backgroundImage: `url(${ImageGenreButton})`}}
                 onClick={onClick}
-            >
-                {genre.toUpperCase()}
-            </button>
-            <span className="text-sm mt-1">{genre}</span>
+            />
+            <div className="genre-label">{genre}</div>
         </div>
     )
 }

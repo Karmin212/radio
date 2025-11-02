@@ -1,11 +1,12 @@
 ﻿import React from "react";
 import GenreButton from "./GenreButton";
+import "./GenreSelector.css";
 
 function GenreSelector({ stations, handlePlay }) {
     const genres = Array.from(new Set(stations.map(s => s.genre)));
 
     return(
-        <div className="flex flex-wrap gap-4 mb-6">
+        <div className="genre-selector">
             {genres.map((genre) => (
                 <GenreButton
                 key={genre}
