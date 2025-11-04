@@ -5,6 +5,8 @@ import NowPlaying from "./components/NowPlaying";
 import AudioPlayer from "./components/AudioPlayer";
 import "./App.css";
 import MyHeader from "./components/MyHeader";
+import WheelSelector from "./components/WheeleSelector";
+
 
 function App() {
   const [currentStation, setCurrentStation] = useState(STATIONS[0]);
@@ -23,6 +25,7 @@ function App() {
       <MyHeader />
       <AudioPlayer audioRef={audioRef} />
       <NowPlaying currentStation={currentStation} />
+      <WheelSelector stations = {STATIONS} currentGenre={currentStation.genre} handlePlay={handlePlay}/>
       <GenreSelector stations={STATIONS} handlePlay={handlePlay} />
     </div>
   );

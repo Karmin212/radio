@@ -1,0 +1,55 @@
+﻿.wheel-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  width: 200px;
+  height: 200px;
+}
+
+.wheel {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #555 0%, #222 70%, #111 100%);
+  border: 4px solid #777;
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.2);
+  transition: transform 0.1s linear;
+  cursor: grab;
+  aspect-ratio: 1 / 1; 
+}
+
+.wheel:active {
+  cursor: grabbing;
+}
+
+.wheel-center {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 30%, #999 0%, #333 70%);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.8),
+    0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+
+.wheel::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
