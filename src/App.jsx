@@ -1,18 +1,15 @@
 import React, { useState, useRef } from "react";
 import { STATIONS } from "./data/stations";
 import GenreSelector from "./components/GenreSelector";
-import NowPlaying from "./components/NowPlaying";
-import AudioPlayer from "./components/AudioPlayer";
 import "./App.css";
 import MyHeader from "./components/MyHeader";
-import WheelSelector from "./components/WheeleSelector";
-
+import PlayerPanel from "./components/PlayerPanel";
 
 function App() {
   const [currentStation, setCurrentStation] = useState(STATIONS[0]);
   const audioRef = useRef(null);
 
-  const handlePlay = (station) => {
+  const setStation = (station) => {
     setCurrentStation(station);
     if (audioRef.current) {
       audioRef.current.src = station.url;
@@ -23,10 +20,13 @@ function App() {
   return (
     <div className="app-container">
       <MyHeader />
-      <AudioPlayer audioRef={audioRef} />
-      <NowPlaying currentStation={currentStation} />
-      <WheelSelector stations = {STATIONS} currentGenre={currentStation.genre} handlePlay={handlePlay}/>
-      <GenreSelector stations={STATIONS} handlePlay={handlePlay} />
+      <PlayerPanel
+        stations={STATIONS}
+        currentStation={currentStation}
+        setStation={setStation}
+        audioRef={audioRef}
+      />
+      <GenreSelector stations={STATIONS} setStation={setStation} />
     </div>
   );
 }

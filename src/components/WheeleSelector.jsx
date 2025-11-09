@@ -1,7 +1,7 @@
 ﻿import React, { useState, useRef, useEffect } from "react";
 import "./WheeleSelector.css";
 
-function WheelSelector({ stations, currentGenre, handlePlay }) {
+function WheelSelector({ stations, currentGenre, setStation }) {
   const genreStations = stations.filter((s) => s.genre === currentGenre);
   const N = genreStations.length;
   const wheelRef = useRef(null);
@@ -9,6 +9,8 @@ function WheelSelector({ stations, currentGenre, handlePlay }) {
   const lastAngle = useRef(0);
   const [rotation, setRotation] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const maxRotation = 720; // два оборота
 
   const getAngle = (x, y, cx, cy) => {
     return Math.atan2(y - cy, x - cx) * (180 / Math.PI);
@@ -36,18 +38,22 @@ function WheelSelector({ stations, currentGenre, handlePlay }) {
     if (delta > 180) delta -= 360;
     if (delta < -180) delta += 360;
 
-    const newRot = rotation + delta;
-    setRotation(newRot);
-    lastAngle.current = angle; // ← обновляем, чтобы вращение не сбивалось
+    let newRot = rotation + delta;
 
-    // вычисляем, сколько сегментов пройдено
-    const segmentAngle = 720 / N; // два оборота = полный цикл
-    const movedSegments = Math.round(newRot / segmentAngle);
-    let newIndex = ((movedSegments % N) + N) % N;
+    // ограничение вращения
+    const clampedRot = Math.max(0, Math.min(newRot, maxRotation));
+
+    setRotation(clampedRot);
+    lastAngle.current = angle;
+
+    // вычисляем сегменты
+    const segmentAngle = maxRotation / N;
+    const movedSegments = Math.round(clampedRot / segmentAngle);
+    const newIndex = Math.min(Math.max(movedSegments, 0), N - 1);
 
     if (newIndex !== currentIndex) {
       setCurrentIndex(newIndex);
-      handlePlay(genreStations[newIndex]);
+      setStation(genreStations[newIndex]);
     }
   };
 
@@ -59,6 +65,7 @@ function WheelSelector({ stations, currentGenre, handlePlay }) {
     dragging.current = false;
   };
 
+  // сброс при смене жанра
   useEffect(() => {
     setCurrentIndex(0);
     setRotation(0);

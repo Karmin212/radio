@@ -2,7 +2,7 @@
 import GenreButton from "./GenreButton";
 import "./GenreSelector.css";
 
-function GenreSelector({ stations, handlePlay }) {
+function GenreSelector({ stations, setStation }) {
     const genres = Array.from(new Set(stations.map(s => s.genre)));
 
     return(
@@ -13,7 +13,7 @@ function GenreSelector({ stations, handlePlay }) {
                 genre={genre}
                 onClick={() => {
                     const station = stations.find(s => s.genre === genre);
-                    handlePlay(station);
+                    setStation(station);
                 }}
                 />
             ))}

@@ -1,11 +1,10 @@
 ﻿import React from "react";
+import "./NowPlaying.css";
 
 function NowPlaying({ currentStation }){
     return (
-        <div className="mb-4">
-            <h3 className="text-lg font-semibold">
-                Сейчас играет: {currentStation.name}
-            </h3>
+        <div className="now-playing">
+            {currentStation.name}
         </div>
     )
 }
