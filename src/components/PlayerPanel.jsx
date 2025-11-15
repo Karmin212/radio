@@ -1,7 +1,10 @@
 ﻿import React, { useState } from "react";
 import WheelSelector from "./WheeleSelector.jsx";
 import NowPlaying from "./NowPlaying.jsx";
+import VolumeSlider from "./VolumeSlider.jsx";
 import "./PlayerPanel.css";
+import play from "./../assets/play.png";
+import stop from "./../assets/stop.png";
 
 function PlayerPanel({ stations, currentStation, setStation, audioRef }) {
   const [volume, setVolume] = useState(0.5);
@@ -17,8 +20,7 @@ function PlayerPanel({ stations, currentStation, setStation, audioRef }) {
     }
   };
 
-  const handleVolumeChange = (e) => {
-    const vol = parseFloat(e.target.value);
+  const handleVolumeChange = (vol) => {
     setVolume(vol);
     if (audioRef.current) audioRef.current.volume = vol;
   };
@@ -30,21 +32,22 @@ function PlayerPanel({ stations, currentStation, setStation, audioRef }) {
         <NowPlaying currentStation={currentStation} />
       </div>
       <div className="switches">
-      <WheelSelector
-        stations={stations}
-        currentGenre={currentStation.genre}
-        setStation={setStation}
-      />
-        <button onClick={handlePlay}>▶️</button>
-        <button onClick={handleStop}>⏹️</button>
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={volume}
-          onChange={handleVolumeChange}
+        <WheelSelector
+          stations={stations}
+          currentGenre={currentStation.genre}
+          setStation={setStation}
         />
+        <button
+          onClick={handlePlay}
+          style={{ backgroundImage: `url(${play})`, backgroundSize: "cover" }}
+        ></button>
+        <button
+          onClick={handleStop}
+          style={{ backgroundImage: `url(${stop})`, backgroundSize: "cover" }}
+        ></button>
+
+        {/* Кастомный вертикальный фейдер */}
+        <VolumeSlider value={volume} onChange={handleVolumeChange} />
       </div>
     </div>
   );

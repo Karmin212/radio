@@ -1,5 +1,6 @@
 ﻿import React, { useState, useRef, useEffect } from "react";
 import "./WheeleSelector.css";
+import wheel from "./../assets/wheel.png";
 
 function WheelSelector({ stations, currentGenre, setStation }) {
   const genreStations = stations.filter((s) => s.genre === currentGenre);
@@ -80,9 +81,13 @@ function WheelSelector({ stations, currentGenre, setStation }) {
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseLeave}
-        style={{ transform: `rotate(${rotation}deg)` }}
       >
-        <div className="wheel-center"></div>
+        <img
+          src={wheel}
+          alt="wheel"
+          className="wheel-image"
+          style={{ transform: `rotate(${rotation}deg)` }}
+        />
       </div>
     </div>
   );
