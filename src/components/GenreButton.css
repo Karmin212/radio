@@ -1,33 +1,24 @@
-﻿.genre-button-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.genre-button {
+﻿.genre-button {
+  position: relative;
   width: 80px;
   height: 40px;
   border: none;
-  background-color: transparent;
   border-radius: 12px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+  transition: box-shadow 0.3s ease, filter 0.3s ease; 
+  z-index: 1;
 }
+
 
 .genre-button:hover {
-  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.6),
-              0 0 15px 3px rgba(255, 0, 200, 0.4),
-              0 0 15px 3px rgba(0, 200, 255, 0.3);
+  filter: brightness(70%); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.007), 0 0 15px 5px var(--hover-color); 
 }
 
-.genre-label {
-  font-size: 14px;
-  color: white;
-  text-align: center;
-  font-weight: 500;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+.genre-button[data-hover-color]:hover {
+  --hover-color: attr(data-hover-color color);
 }
