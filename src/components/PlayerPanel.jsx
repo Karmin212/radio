@@ -28,7 +28,7 @@ function PlayerPanel({ stations, currentStation, setStation, audioRef }) {
   return (
     <div className="player-panel">
       <audio ref={audioRef} />
-      <div className="now-playing">
+      <div className="blue-screen">
         <NowPlaying currentStation={currentStation} />
       </div>
       <div className="switches">

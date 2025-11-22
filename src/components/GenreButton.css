@@ -1,5 +1,4 @@
 ﻿.genre-button {
-  position: relative;
   width: 80px;
   height: 40px;
   border: none;
@@ -21,4 +20,20 @@
 
 .genre-button[data-hover-color]:hover {
   --hover-color: attr(data-hover-color color);
+}
+
+.genre-label{
+  margin-top: 10px;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.genre-button-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

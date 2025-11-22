@@ -8,11 +8,17 @@
   box-sizing: border-box;
 }
 
-/* Левая часть — NowPlaying */
-.now-playing {
+
+.blue-screen {
   flex: 0 0 60%;  
   display: flex;
-  align-items: center;
+  height: 20%;
+  border: 2px solid #c0c0c0;
+  border-radius: 6px;
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 2px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
 }
 
 /* Правая часть — колесико и кнопки */

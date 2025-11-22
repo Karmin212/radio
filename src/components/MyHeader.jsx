@@ -1,9 +1,10 @@
 ﻿import React from "react";
+import "./MyHeader.css";
 
 function MyHeader({ genre, onClick }) {
     return (
-        <div className="flex flex-col items-center">
-           <h1 className="text-3xl font-bold mb-6">My Radio</h1> 
+        <div className="MyHeader">
+           <h1 className="text">VibeWave</h1> 
         </div>
     )
 }
