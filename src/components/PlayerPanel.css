@@ -51,3 +51,13 @@
 .switches input[type="range"] {
   width: 100px;
 }
+
+.play:hover {
+  filter: brightness(70%); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.007), 0 0 15px 5px var(--hover-color); 
+}
+
+.stop:hover {
+  filter: brightness(70%); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.007), 0 0 15px 5px var(--hover-color); 
+}

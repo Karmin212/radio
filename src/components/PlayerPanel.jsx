@@ -38,10 +38,12 @@ function PlayerPanel({ stations, currentStation, setStation, audioRef }) {
           setStation={setStation}
         />
         <button
+          className="play"
           onClick={handlePlay}
           style={{ backgroundImage: `url(${play})`, backgroundSize: "cover" }}
         ></button>
         <button
+          className="stop"
           onClick={handleStop}
           style={{ backgroundImage: `url(${stop})`, backgroundSize: "cover" }}
         ></button>

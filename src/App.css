@@ -64,3 +64,58 @@
   50% { opacity: 0.12; }
   100% { opacity: 0.05; }
 }
+
+.rainbow-start {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    red 0%,
+    orange 14.2%,
+    yellow 28.4%,
+    green 42.6%,
+    blue 56.8%,
+    indigo 71%,
+    violet 85%,
+    red 100%
+  );
+  background-size: 1200% 100%;
+  animation: rainbowShift 120s linear infinite; /* медленно */
+}
+
+.rainbow-start::before,
+.rainbow-start::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  animation: pulseMove 60s linear infinite, pulseOpacity 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.rainbow-start::after {
+  animation-duration: 90s, 25s; /* немного разная скорость для второго слоя */
+}
+
+@keyframes rainbowShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: -600% 0%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes pulseMove {
+  0% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(10%, 10%) scale(1.03); } /* меньше смещение */
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.03; }
+  50% { opacity: 0.12; }
+  100% { opacity: 0.03; }
+}
+
